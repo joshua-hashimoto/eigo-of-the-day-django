@@ -3,6 +3,8 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
 
+from pages.views import MarkdownImageUploader
+
 urlpatterns = [
     # django admin
     path('admin/', include('admin_honeypot.urls', namespace='admin_honeypot')),
@@ -12,8 +14,8 @@ urlpatterns = [
     # third party
     path('martor/', include('martor.urls')),
     # local apps
-    # path('api/uploader/', MarkdownImageUploader.as_view(),
-    #      name='markdown_uploader_page'),
+    path('api/uploader/', MarkdownImageUploader.as_view(),
+         name='markdown_uploader_page'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 if settings.DEBUG:
