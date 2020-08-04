@@ -1,0 +1,16 @@
+{% extends '_base.html' %}
+
+{% block title %}
+{% endblock title %}
+
+{% block content %}
+<p>{{ object.phrase }}</p>
+{% for example in object.examples.all %}
+    <p>{{ example.example }}</p>
+{% endfor %}
+{% if object.snaps %}
+    {% for snap in object.snaps.all %}
+        <img src="{{ snap.snap.url }}" alt="{{ object.phrase }}">
+    {% endfor %}
+{% endif %}
+{% endblock content %}

@@ -1,0 +1,29 @@
+{% extends '_base.html' %}
+{% load martortags %}
+
+{% block title %}
+{% endblock title %}
+
+{% block content %}
+<form action="" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+
+    {{ examples.management_form }}
+    {% for example_form in examples %}
+        {{ example_form.as_p }}
+    {% endfor %}
+    {{ snaps.management_form }}
+    {% for snap_form in snaps %}
+        {{ snap_form.as_p }}
+    {% endfor %}
+
+    <button type="submit" class="uk-button uk-button-primary">save</button>
+</form>
+{% endblock content %}
+
+{% block style %}
+{% endblock style %}
+
+{% block javascript %}
+{% endblock javascript %}
