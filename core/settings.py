@@ -43,6 +43,8 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.instagram',
     # local
     'users.apps.UsersConfig',
+    'pages.apps.PagesConfig',
+    'eigo.apps.EigoConfig',
     # third party that is recommended to be in the end
     'django_cleanup.apps.CleanupConfig',
 ]
@@ -192,8 +194,7 @@ CLOUDINARY_STORAGE = {
     'API_KEY': os.environ.get('CLOUDINARY_API_KEY'),
     'API_SECRET': os.environ.get('CLOUDINARY_API_SECRET'),
 }
-# DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
-DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.VideoMediaCloudinaryStorage'
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 
 # martor
