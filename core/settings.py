@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'allauth.socialaccount.providers.instagram',
     # local
+    'users.apps.UsersConfig',
     # third party that is recommended to be in the end
     'django_cleanup.apps.CleanupConfig',
 ]
