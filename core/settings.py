@@ -199,12 +199,14 @@ DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 # martor
 MARTOR_ENABLE_CONFIGS = {
-    'imgur': 'true',     # to enable/disable imgur uploader/custom uploader.
-    'mention': 'true',   # to enable/disable mention
+    'emoji': 'true',        # to enable/disable emoji icons.
+    'imgur': 'true',        # to enable/disable imgur/custom uploader.
+    'mention': 'true',      # to enable/disable mention
     # to include/revoke jquery (require for admin default django)
     'jquery': 'true',
     'living': 'false',      # to enable/disable live updates in preview
     'spellcheck': 'false',  # to enable/disable spellcheck in form textareas
+    'hljs': 'true',         # to enable/disable hljs highlighting in preview
 }
 # Upload to locale storage
 MARTOR_UPLOAD_URL = '/api/uploader/'  # change to local uploader
