@@ -1,0 +1,44 @@
+{% extends '_base.html' %}
+{% load widget_tweaks %}
+
+{% block title %}
+Sign Up | {{ block.super }}
+{% endblock title %}
+
+{% block content %}
+<h2>Sign Up</h2>
+<form action="" method="post">
+    {% csrf_token %}
+
+    {% include 'widgets/error-messages.html' %}
+
+    {% comment 'usernameを必須から外してemailを必須にしたためSignupに表示されない' %}
+    <div class="uk-margin">
+        {{ form.username.label }}
+        {{ form.username | add_class:"uk-input" }}
+    </div>
+    {% endcomment %}
+
+    <div class="uk-margin">
+        {{ form.email.label }}
+        {{ form.email | add_class:"uk-input" }}
+    </div>
+    
+    <div class="uk-margin">
+        {{ form.password1.label }}
+        {{ form.password1 | add_class:"uk-input" }}
+    </div>
+
+    {% comment '2回入力をoffにしてるので表示されない' %}
+    <div class="uk-margin">
+        {{ form.password2.label }}
+        {{ form.password2 | add_class:"uk-input" }}
+    </div>
+    {% endcomment %}
+
+    <div class="uk-margin">
+        <button class="uk-button uk-button-primary" type="submit">Sign Up</button>
+    </div>
+</form>
+
+{% endblock content %}
