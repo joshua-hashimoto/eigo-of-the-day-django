@@ -10,7 +10,7 @@ class Phrase(CoreModel):
     """
     user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
     phrase = models.CharField(max_length=255)
-    memo = MartorField()
+    memo = MartorField(blank=True)
 
 
 class Example(CoreModel):
@@ -20,7 +20,7 @@ class Example(CoreModel):
         Phrase, on_delete=models.CASCADE, related_name='examples')
     user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
     example = models.TextField()
-    memo = MartorField()
+    memo = MartorField(blank=True)
 
 
 def upload_image_to(instance, filename):
