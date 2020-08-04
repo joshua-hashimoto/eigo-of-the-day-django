@@ -1,0 +1,36 @@
+{% extends '_base.html' %}
+{% load widget_tweaks %}
+
+{% block title %}
+Log In | {{ block.super }}
+{% endblock title %}
+
+{% block content %}
+<h2>Log In</h2>
+<form action="" method="post">
+    {% csrf_token %}
+
+    {% include 'widgets/error-messages.html' %}
+    
+    <div class="uk-margin">
+        {{ form.login.label }}
+        {{ form.login | add_class:"uk-input" }}
+    </div>
+
+    <div class="uk-margin">
+        {{ form.password.label }}
+        {{ form.password | add_class:"uk-input" }}
+    </div>
+
+    {% comment 'デフォルトでTrueにしているので表示されなくなっている' %}
+    <div class="uk-margin">
+        {{ form.remember.label }}
+        {{ form.remember }}
+    </div>
+    {% endcomment %}
+
+    <div class="uk-margin">
+        <button class="uk-button uk-button-primary" type="submit">Log In</button>
+    </div>
+</form>
+{% endblock content %}
