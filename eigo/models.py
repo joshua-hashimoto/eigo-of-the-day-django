@@ -41,7 +41,7 @@ class Snap(CoreModel):
     phrase = models.ForeignKey(
         Phrase, on_delete=models.CASCADE, related_name='snaps')
     user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
-    snap = models.ImageField(upload_to=upload_image_to)
+    snap = models.ImageField(upload_to=upload_image_to, blank=True,)
 
     def __str__(self):
         return self.snap.name
