@@ -1,0 +1,18 @@
+{% extends '_base.html' %}
+{% load widget_tweaks %}
+
+{% block title %}
+Log Out | {{ block.super }}
+{% endblock title %}
+
+{% block content %}
+<div>
+    <h1>Log Out</h1>
+    <p>Are you sure you want to log out?</p>
+    <form action="{% url 'account_logout' %}" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="uk-button uk-button-primary">Log Out</button>
+    </form>
+</div>
+{% endblock content %}

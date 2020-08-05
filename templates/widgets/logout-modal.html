@@ -1,0 +1,15 @@
+<!-- This is an anchor toggling the modal -->
+<a href="#logout-modal" uk-toggle>Log Out</a>
+
+<!-- This is the modal -->
+<div id="logout-modal" uk-modal>
+    <div class="uk-modal-dialog uk-modal-body">
+        <h2 class="uk-heading-divider">Log Out</h2>
+        <p>Are you sure you want to log out?</p>
+        <form action="{% url 'account_logout' %}" method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="uk-button uk-button-primary">Log Out</button>
+        </form>
+    </div>
+</div>

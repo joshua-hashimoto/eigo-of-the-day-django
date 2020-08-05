@@ -1,0 +1,36 @@
+{% extends '_base.html' %}
+
+{% block title %}
+{% endblock title %}
+
+{% block content %}
+<div class="uk-container-small uk-align-center">
+    <div class="uk-flex uk-flex-between uk-margin">
+        <div class="uk-flex uk-flex-middle">
+            <a href="{% url 'eigo:eigo_new' %}" class="uk-button uk-button-primary">add</a>
+            <form action="" method="get">
+                <button type="submit" uk-icon="arrow-up" name="ordering" value="up"></button>
+                <button type="submit" uk-icon="arrow-down" name="ordering" value="down"></button>
+            </form>
+        </div>
+        <form action="" method="get">
+            <div>
+                <input type="text" name="search" class="uk-input uk-form-width-medium" placeholder="Search">
+                <button class='uk-button uk-button-primary uk-margin-left'>search</button>
+            </div>
+        </form>
+    </div>
+    <div class="uk-list">
+        {% for eigo in eigo_list %}
+            {% include 'eigo/eigo_list_cell.html' with eigo=eigo %}
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock content %}
+
+{% block style %}
+{% endblock style %}
+
+{% block javascript %}
+{% endblock javascript %}

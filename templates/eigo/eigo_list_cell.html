@@ -1,0 +1,20 @@
+<a href="{{ eigo.get_absolute_url }}" class="uk-display-block uk-link-toggle">
+    <div class="uk-margin">
+        <div class="uk-card uk-card-default uk-card-hover">
+            <div class="uk-card-header">
+                <div class="uk-grid-small uk-child-width-expand@s" uk-grid>
+                    <div class="uk-width-expand">
+                        <h3 class="uk-card-title uk-margin-remove-bottom">{{ eigo.phrase }}</h3>
+                        <p class="uk-text-meta uk-margin-remove-top">added by {{ eigo.user }}</p>
+                    </div>
+                    <div class="uk-width-1-5">
+                        <div>
+                            <p>{{ eigo.examples.count }} examples</p>
+                            <p>{{ eigo.snaps.count }} snaps</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</a>
