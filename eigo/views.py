@@ -20,6 +20,11 @@ class PhraseListView(LoginRequiredMixin, ListView):
         queryset = Phrase.objects.all()
         if (query := self.request.GET.get('search')):
             queryset = Phrase.objects.search(query)
+        if (ordering := self.request.GET.get('ordering')):
+            if ordering == 'up':
+                queryset = queryset.order_by('-phrase')
+            if ordering == 'down':
+                queryset = queryset.order_by('phrase')
         return queryset
 
 
