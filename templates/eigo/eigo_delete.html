@@ -1,0 +1,13 @@
+{% extends '_base.html' %}
+
+{% block content %}
+<div class="uk-container-small uk-align-center">
+    <h1 class="ul-heading-divider">DELETE</h1>
+    <p>Are you sure you want to delete phrase '{{ object.phrase }}' and it's related data?</p>
+    <form action="" method="post">
+        {% csrf_token %}
+        <a href="{% url 'eigo:eigo_detail' pk=object.pk %}" class="uk-button button-default">cancel</a>
+        <button class="uk-button uk-button-danger" type="submit">delete</button>
+    </form>
+</div>
+{% endblock content %}
