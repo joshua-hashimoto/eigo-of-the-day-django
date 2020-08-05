@@ -4,13 +4,48 @@
 {% endblock title %}
 
 {% block content %}
-<p>{{ object.phrase }}</p>
-{% for example in object.examples.all %}
-    <p>{{ example.example }}</p>
-{% endfor %}
-{% if object.snaps %}
-    {% for snap in object.snaps.all %}
-        <img src="{{ snap.snap.url }}" alt="{{ object.phrase }}">
-    {% endfor %}
-{% endif %}
+
+<div class="uk-container-small uk-align-center">
+    <div class="uk-flex-left uk-margin-medium-bottom">
+        <a class="uk-link-muted uk-text-uppercase" href="{% url 'eigo:eigo_list' %}">back</a>
+    </div>
+
+    <article class="uk-article">
+        <h1 class="uk-article-title">{{ eigo.phrase }}</h1>
+        <p class="uk-article-meta">added by {{ eigo.user }} | {{ eigo.examples.count }} examples | {{ eigo.snaps.count }} snaps</p>
+
+        <div>
+            <h4>Examples</h4>
+            <ul class="uk-list uk-list-divider">
+                {% for example in eigo.examples.all %}
+                    <li>{{ example.example }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div uk-slider>
+            <h4>Snaps</h4>
+            <ul class="uk-slider-items uk-child-width-1-3@s uk-child-width-1-4@">
+                {% for snap in eigo.snaps.all %}
+                    <li>
+                        <img src="{{ snap.snap.url }}" alt="{{ snap.snap.name }}">
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </article>
+</div>
 {% endblock content %}
+
+
+    <article class="uk-article">
+        {% if book.cover %}
+            <div class="uk-cover-container">
+                <canvas width="400" height="400"></canvas>
+                <img src="{{ book.cover.url }}" alt="{{ book.title }}" uk-cover>
+            </div>
+        {% endif %}
+        <h1 class="uk-article-title uk-heading-divider">{{ book.title }}</h1>
+        <p class="uk-article-meta">Written by {{ book.author }}.</p>
+        <p class="uk-text-lead">Price of {{ book.price }}</p>
+    </article>
