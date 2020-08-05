@@ -6,6 +6,10 @@ Memo App for Instagram Account eigo.of.the.day
 
 [TOC]
 
+## Note
+
+- Currently not using package `martor`, but installed and configured.
+
 ## docker-compose.yml
 
 ```yaml
