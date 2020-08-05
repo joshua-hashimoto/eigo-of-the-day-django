@@ -36,6 +36,11 @@
                 {% endfor %}
             </ul>
         </div>
+
+        <div class="eigo-detail-modify uk-flex uk-flex-center">
+            <a href="{% url 'eigo:eigo_edit' pk=eigo.pk %}" class="uk-button uk-button-primary">edit</a>
+            <a href="{% url 'eigo:eigo_delete' pk=eigo.pk %}" class="uk-button uk-button-danger">delete</a>
+        </div>
     </article>
 </div>
 {% endblock content %}
