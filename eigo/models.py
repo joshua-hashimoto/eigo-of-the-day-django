@@ -47,6 +47,9 @@ class Phrase(CoreModel):
 
     objects = PhraseManager()
 
+    class Meta:
+        ordering = ['phrase', ]
+
     def __str__(self):
         return self.phrase
 
