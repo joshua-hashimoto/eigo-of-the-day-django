@@ -22,6 +22,7 @@ dj3-cloudinary-storage = "*"
 python-magic = "*"
 martor = "*"
 django-allauth = "*"
+dj-database-url = "*"
 
 [requires]
 python_version = "3.8"
