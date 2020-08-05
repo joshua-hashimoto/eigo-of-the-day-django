@@ -1,7 +1,8 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db import transaction
 from django.views.generic import ListView, DetailView
-from django.views.generic.edit import CreateView, UpdateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.shortcuts import HttpResponseRedirect
 from django.urls import reverse_lazy
 
 from .forms import PhraseForm, ExampleFormSet, SnapFormSet
@@ -124,3 +125,16 @@ class PhraseUpdateView(LoginRequiredMixin, UpdateView):
 
     def get_success_url(self):
         return reverse_lazy('eigo:eigo_detail', kwargs={'pk': self.object.pk})
+
+
+class PhraseDeleteView(LoginRequiredMixin, DeleteView):
+    model = Phrase
+    template_name = 'eigo/eigo_delete.html'
+    success_url = reverse_lazy('eigo:eigo_list')
+    login_url = 'account_login'
+
+    def delete(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        self.object.is_active = False
+        self.object.save()
+        return HttpResponseRedirect(self.get_success_url())

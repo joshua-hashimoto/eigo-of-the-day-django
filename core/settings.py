@@ -16,7 +16,8 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = int(os.environ.get('DEBUG'))
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', ]
+ALLOWED_HOSTS = ['localhost', '127.0.0.1',
+                 'eigo-of-the-day.herokuapp.com', ]
 
 
 # Application definition
@@ -172,8 +173,8 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 
 # django-allauth configs
-LOGIN_REDIRECT_URL = 'eigo:home'
-ACCOUNT_LOGOUT_REDIRECT = 'eigo:home'
+LOGIN_REDIRECT_URL = 'eigo:eigo_list'
+ACCOUNT_LOGOUT_REDIRECT = 'eigo:eigo_list'
 SITE_ID = 1
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',  # django default
