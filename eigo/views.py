@@ -1,6 +1,6 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db import transaction
-from django.views.generic import DetailView
+from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView
 from django.urls import reverse_lazy
 
@@ -8,11 +8,27 @@ from .forms import PhraseForm, ExampleFormSet, SnapFormSet
 from .models import Phrase
 
 
+class PhraseListView(LoginRequiredMixin, ListView):
+    """
+    """
+    model = Phrase
+    template_name = 'eigo/eigo_list.html'
+    context_object_name = 'eigo_list'
+    login_url = 'account_login'
+
+    def get_queryset(self):
+        queryset = Phrase.objects.all()
+        if (query := self.request.GET.get('search')):
+            queryset = Phrase.objects.search(query)
+        return queryset
+
+
 class PhraseDetailView(LoginRequiredMixin, DetailView):
     """
     """
     model = Phrase
     template_name = 'eigo/eigo_detail.html'
+    context_object_name = 'eigo'
     login_url = 'account_login'
 
 
