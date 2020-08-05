@@ -1,15 +1,12 @@
 <nav class="uk-background-secondary uk-light uk-margin" uk-navbar>
     <div class="uk-navbar-left">
-        <a href="" class="uk-navbar-item uk-logo">Eigo of the day</a>
-        {% if user.is_authenticated %}
-            <div class="uk-navbar-item">
-                <div>{{ user.email }}</div>
-            </div>
-        {% endif %}
+        <a href="/" class="uk-navbar-item uk-logo">EIGO of THE DAY</a>
+        <small class="text-secondary">Useful Uduins abd Phrases.</small>
     </div>
     <div class="uk-navbar-right">
         <ul class="uk-navbar-nav">
             {% if user.is_authenticated %}
+                <li class="uk-navbar-item">{{ user.email }}</li>
                 {% comment 'ログアウト用の画面へ飛ぶ' %} <li><a href="{% url 'account_logout' %}">Log Out</a></li> {% endcomment %}
                 <li>{% include 'widgets/logout-modal.html' %}</li>
             {% else %}
