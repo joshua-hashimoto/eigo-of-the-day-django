@@ -16,23 +16,26 @@
 
         <div class="eigo-form-example eigo-form-common" uk-margin>
             <h3>Examples</h3>
-            {{ examples.management_form }}
-            {% for example_form in examples %}
+            {{ example_formset.management_form }}
+            {% comment %} {% for example_form in example_formset %}
                 {{ example_form.example | add_class:'uk-input' }}
-            {% endfor %}
+            {% endfor %} {% endcomment %}
+            {{ example_formset.as_table }}
         </div>
 
         <div class="eigo-form-snap eigo-form-common" uk-margin>
             <h3>Snaps</h3>
             <ul class="uk-list uk-list-divider">
-                {{ snaps.management_form }}
-                {% for snap_form in snaps %}
+                {{ snap_formset.management_form }}
+                {% comment %} {% for snap_form in snap_formset %}
                     <li>{{ snap_form.snap }}</li>
-                {% endfor %}
+                {% endfor %} {% endcomment %}
+                {{ snap_formset.as_table }}
             </ul>
         </div>
 
-        <div class="eigo-form-submit eigo-form-common uk-flex uk-flex-right">
+        <div class="eigo-form-submit eigo-form-common uk-flex uk-flex-between">
+            <a href="{{ url }}" class="uk-button uk-button-primary">CANCEL</a>
             <button type="submit" class="uk-button uk-button-primary">save</button>
         </div>
     </form>
