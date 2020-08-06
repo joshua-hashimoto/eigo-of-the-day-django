@@ -110,7 +110,7 @@ class Snap(CoreModel):
     """
     phrase = models.ForeignKey(
         Phrase, on_delete=models.CASCADE, related_name='snaps')
-    snap = models.ImageField(upload_to=upload_image_to, blank=True,)
+    snap = models.ImageField(upload_to=upload_image_to,)
 
     objects = SnapManager()
 
