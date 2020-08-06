@@ -7,13 +7,32 @@
 
 <div class="eigo-form-example eigo-form-common" uk-margin>
     <h3>Examples</h3>
-    {{ example_formset.management_form }}
-    {% for example_form in example_formset %}
-        {% comment 'need id for update. it is hidden from the user so no style is needed' %}
-        {% endcomment %}
-        {{ example_form.id }}
-        {{ example_form.example | add_class:'uk-input' }}
-    {% endfor %}
+    <ul class="uk-list">
+        {{ example_formset.management_form }}
+        {% for example_form in example_formset %}
+            {% for field, errors in example_form.errors.items %}
+                    {% for error in errors %}
+                        <div class="uk-alert-danger" uk-alert>
+                            <a class="uk-alert-close" uk-close></a>
+                            <p>{{ error }}</p>
+                        </div>
+                    {% endfor %}
+            {% endfor %}
+            {% comment %}
+            need id for update. it is hidden from the user so no style is needed
+            {% endcomment %}
+            {{ example_form.id }}
+            <li uk-grid>
+                <div class="uk-width-expand">
+                    {{ example_form.example | add_class:'uk-input' }}
+                </div>
+                <div>
+                    {{ example_form.DELETE.label }}
+                    {{ example_form.DELETE }}
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
 </div>
 
 <div class="eigo-form-snap eigo-form-common" uk-margin>
@@ -21,10 +40,27 @@
     <ul class="uk-list uk-list-divider">
         {{ snap_formset.management_form }}
         {% for snap_form in snap_formset %}
-            {% comment 'need id for update. it is hidden from the user so no style is needed' %}
+            {% for field, errors in snap_form.errors.items %}
+                    {% for error in errors %}
+                        <div class="uk-alert-danger" uk-alert>
+                            <a class="uk-alert-close" uk-close></a>
+                            <p>{{ error }}</p>
+                        </div>
+                    {% endfor %}
+            {% endfor %}
+            {% comment %}
+            need id for update. it is hidden from the user so no style is needed
             {% endcomment %}
             {{ snap_form.id }}
-            <li>{{ snap_form.snap }}</li>
+            <li class="uk-flex uk-flex-between">
+                <div>
+                    {{ snap_form.snap }}
+                </div>
+                <div>
+                    {{ snap_form.DELETE.label }}
+                    {{ snap_form.DELETE }}
+                </div>
+            </li>
         {% endfor %}
     </ul>
 </div>
