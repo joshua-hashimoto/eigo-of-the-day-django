@@ -1,0 +1,27 @@
+{% extends '_base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block title %}
+{% endblock title %}
+
+{% block content %}
+<div class="uk-container-small uk-align-center">
+    <form action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {% include 'widgets/eigo_form_base.html' %}
+        
+        <div class="eigo-form-submit eigo-form-common uk-flex uk-flex-between">
+            <a href="{% url 'eigo:eigo_list' %}" class="uk-button uk-button-danger">CANCEL</a>
+            <button type="submit" class="uk-button uk-button-primary">save</button>
+        </div>
+    </form>
+</div>
+{% endblock content %}
+
+{% block style %}
+<link rel="stylesheet" href="{% static 'css/eigo-form.css' %}">
+{% endblock style %}
+
+{% block javascript %}
+{% endblock javascript %}
