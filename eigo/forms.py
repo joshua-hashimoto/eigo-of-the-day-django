@@ -10,7 +10,7 @@ class ExampleInlineFormSet(InlineFormSetFactory):
     fields = ('example',)
     prefix = 'example-form'
     factory_kwargs = {'extra': 3, 'max_num': None,
-                      'can_order': False, 'can_delete': False}
+                      'can_order': False, 'can_delete': True}
 
 
 class SnapInlineFormSet(InlineFormSetFactory):
@@ -18,4 +18,4 @@ class SnapInlineFormSet(InlineFormSetFactory):
     fields = ('snap',)
     prefix = 'snap-form'
     factory_kwargs = {'extra': 5, 'max_num': None,
-                      'can_order': False, 'can_delete': False}
+                      'can_order': False, 'can_delete': True}
