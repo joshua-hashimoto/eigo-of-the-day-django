@@ -1,45 +1,21 @@
 from django import forms
-from django.forms.models import inlineformset_factory
-from martor.fields import MartorFormField
-
-from .models import Phrase, Example, Snap
+from extra_views import InlineFormSetFactory
 
 
-class PhraseForm(forms.ModelForm):
-
-    class Meta:
-        model = Phrase
-        fields = ('phrase', )
+from .models import Example, Snap
 
 
-class ExampleForm(forms.ModelForm):
-
-    class Meta:
-        model = Example
-        fields = ('example',)
-
-
-class SnapForm(forms.ModelForm):
-
-    class Meta:
-        model = Snap
-        fields = ('snap',)
+class ExampleInlineFormSet(InlineFormSetFactory):
+    model = Example
+    fields = ('example',)
+    prefix = 'example-form'
+    factory_kwargs = {'extra': 3, 'max_num': None,
+                      'can_order': False, 'can_delete': False}
 
 
-ExampleFormSet = inlineformset_factory(
-    Phrase,
-    Example,
-    form=ExampleForm,
-    fields=['example', ],
-    extra=3,
-    can_delete=False,
-)
-
-SnapFormSet = inlineformset_factory(
-    Phrase,
-    Snap,
-    form=SnapForm,
-    fields=['snap', ],
-    extra=5,
-    can_delete=False,
-)
+class SnapInlineFormSet(InlineFormSetFactory):
+    model = Snap
+    fields = ('snap',)
+    prefix = 'snap-form'
+    factory_kwargs = {'extra': 5, 'max_num': None,
+                      'can_order': False, 'can_delete': False}

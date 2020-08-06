@@ -23,6 +23,7 @@ python-magic = "*"
 martor = "*"
 django-allauth = "*"
 dj-database-url = "*"
+django-extra-views = "*"
 
 [requires]
 python_version = "3.8"
