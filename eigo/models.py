@@ -48,7 +48,7 @@ class Phrase(CoreModel):
     objects = PhraseManager()
 
     class Meta:
-        ordering = ['phrase', ]
+        ordering = ['-timestamp', '-updated', ]
 
     def __str__(self):
         return self.phrase
@@ -77,7 +77,6 @@ class Example(CoreModel):
     """
     phrase = models.ForeignKey(
         Phrase, on_delete=models.CASCADE, related_name='examples')
-    user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
     example = models.TextField()
 
     objects = ExampleManager()
@@ -111,7 +110,6 @@ class Snap(CoreModel):
     """
     phrase = models.ForeignKey(
         Phrase, on_delete=models.CASCADE, related_name='snaps')
-    user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
     snap = models.ImageField(upload_to=upload_image_to, blank=True,)
 
     objects = SnapManager()
