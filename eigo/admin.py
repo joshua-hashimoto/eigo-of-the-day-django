@@ -1,6 +1,5 @@
 from django.contrib import admin
 from django.db import models
-from martor.widgets import AdminMartorWidget
 
 from .models import Phrase, Example, Snap
 
@@ -28,9 +27,6 @@ class SnapInline(admin.TabularInline):
 
 
 class PhraseAdmin(admin.ModelAdmin):
-    formfield_overrides = {
-        models.TextField: {'widget': AdminMartorWidget},
-    }
 
     list_display = [
         'id',
@@ -54,6 +50,21 @@ class PhraseAdmin(admin.ModelAdmin):
     ]
 
 
+class SnapAdmin(admin.ModelAdmin):
+    list_display = [
+        'id',
+        'snap',
+        'is_active',
+    ]
+    list_display_links = [
+        'id',
+    ]
+    list_filter = [
+        'snap',
+        'is_active',
+    ]
+
+
 admin.site.register(Phrase, PhraseAdmin)
 admin.site.register(Example)
-admin.site.register(Snap)
+admin.site.register(Snap, SnapAdmin)
