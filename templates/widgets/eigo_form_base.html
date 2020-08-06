@@ -1,0 +1,30 @@
+{% load widget_tweaks %}
+
+<div class="eigo-form-phrase eigo-form-common" uk-margin>
+    <h3>{{ form.phrase.label }}</h3>
+    {{ form.phrase | add_class:'uk-input uk-width-1-3 uk-form-large' }}
+</div>
+
+<div class="eigo-form-example eigo-form-common" uk-margin>
+    <h3>Examples</h3>
+    {{ example_formset.management_form }}
+    {% for example_form in example_formset %}
+        {% comment 'need id for update. it is hidden from the user so no style is needed' %}
+        {% endcomment %}
+        {{ example_form.id }}
+        {{ example_form.example | add_class:'uk-input' }}
+    {% endfor %}
+</div>
+
+<div class="eigo-form-snap eigo-form-common" uk-margin>
+    <h3>Snaps</h3>
+    <ul class="uk-list uk-list-divider">
+        {{ snap_formset.management_form }}
+        {% for snap_form in snap_formset %}
+            {% comment 'need id for update. it is hidden from the user so no style is needed' %}
+            {% endcomment %}
+            {{ snap_form.id }}
+            <li>{{ snap_form.snap }}</li>
+        {% endfor %}
+    </ul>
+</div>

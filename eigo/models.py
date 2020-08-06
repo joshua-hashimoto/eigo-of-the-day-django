@@ -48,7 +48,7 @@ class Phrase(CoreModel):
     objects = PhraseManager()
 
     class Meta:
-        ordering = ['phrase', ]
+        ordering = ['-timestamp', '-updated', ]
 
     def __str__(self):
         return self.phrase
@@ -57,16 +57,47 @@ class Phrase(CoreModel):
         return reverse("eigo:eigo_detail", kwargs={"pk": self.pk})
 
 
+class ExampleQueryset(models.QuerySet):
+
+    def all(self):
+        return self.filter(is_active=True)
+
+
+class ExampleManager(models.Manager):
+
+    def get_queryset(self):
+        return ExampleQueryset(self.model, using=self._db)
+
+    def all(self):
+        return self.get_queryset().all()
+
+
 class Example(CoreModel):
     """
     """
     phrase = models.ForeignKey(
         Phrase, on_delete=models.CASCADE, related_name='examples')
-    user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
     example = models.TextField()
+
+    objects = ExampleManager()
 
     def __str__(self):
         return self.example
+
+
+class SnapQueryset(models.QuerySet):
+
+    def all(self):
+        return self.filter(is_active=True)
+
+
+class SnapManager(models.Manager):
+
+    def get_queryset(self):
+        return SnapQueryset(self.model, using=self._db)
+
+    def all(self):
+        return self.get_queryset().all()
 
 
 def upload_image_to(instance, filename):
@@ -79,8 +110,9 @@ class Snap(CoreModel):
     """
     phrase = models.ForeignKey(
         Phrase, on_delete=models.CASCADE, related_name='snaps')
-    user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
     snap = models.ImageField(upload_to=upload_image_to, blank=True,)
+
+    objects = SnapManager()
 
     def __str__(self):
         return self.snap.name
