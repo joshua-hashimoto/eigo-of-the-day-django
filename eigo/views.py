@@ -74,13 +74,14 @@ class PhraseUpdateView(LoginRequiredMixin, NamedFormsetsMixin, UpdateWithInlines
 
 
 class PhraseDeleteView(LoginRequiredMixin, DeleteView):
+    """
+    Note:
+        originally designed to only disable object by changing
+        is_active field to False. However due to the model Phrase
+        needs to be unique, it will create more problems then
+        the benifit it will give to the user. This might change.
+    """
     model = Phrase
     template_name = 'eigo/eigo_delete.html'
     success_url = reverse_lazy('eigo:eigo_list')
     login_url = 'account_login'
-
-    def delete(self, request, *args, **kwargs):
-        self.object = self.get_object()
-        self.object.is_active = False
-        self.object.save()
-        return HttpResponseRedirect(self.get_success_url())
