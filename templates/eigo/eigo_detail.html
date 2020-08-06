@@ -26,20 +26,26 @@
             </ul>
         </div>
 
-        <div class="eigo-detail-snap eigo-detail-common" uk-slider>
+        <div class="eigo-detail-snap eigo-detail-common">
             <h3>Snaps</h3>
-            <ul class="uk-slider-items uk-child-width-1-3@s uk-child-width-1-4@">
-                {% for snap in eigo.snaps.all %}
-                    {% if snap.snap %}
-                        <li>
-                            <img src="{{ snap.snap.url }}" alt="{{ snap.snap.name }}">
-                        </li>
-                    {% endif %}
-                {% endfor %}
-            </ul>
+            <div class="uk-position-relative uk-visible-toggle" uk-slider>
+                <ul class="uk-slider-items uk-grid">
+                    {% for snap in eigo.snaps.all %}
+                        {% if snap.snap %}
+                            <li>
+                                <div class="uk-panel">
+                                    <img src="{{ snap.snap.url }}" alt="{{ snap.snap.name }}" width="300" height="200">
+                                </div>
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+                <a class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous uk-slider-item="previous"></a>
+                <a class="uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next uk-slider-item="next"></a>
+            </div>
         </div>
 
-        <div class="eigo-detail-modify uk-flex uk-flex-center">
+        <div class="eigo-detail-modify eigo-detail-common uk-flex uk-flex-around">
             <a href="{% url 'eigo:eigo_edit' pk=eigo.pk %}" class="uk-button uk-button-primary">edit</a>
             <a href="{% url 'eigo:eigo_delete' pk=eigo.pk %}" class="uk-button uk-button-danger">delete</a>
         </div>
