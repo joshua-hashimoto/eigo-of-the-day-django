@@ -40,3 +40,7 @@ services:
 volumes:
     postgres_data:
 ```
+
+## deploy
+
+This project is uploaded to Heroku.
