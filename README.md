@@ -44,3 +44,8 @@ volumes:
 ## deploy
 
 This project is uploaded to Heroku.
+
+### notable feature
+
+- docker
+- postgresql
