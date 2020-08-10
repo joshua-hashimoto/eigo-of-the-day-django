@@ -11,8 +11,19 @@ import cloudinary
 
 
 class MarkdownImageUploader(View):
+    """
+    custom image uploader for martor.
+    """
 
     def post(self, request, *args, **kwargs):
+        """
+        called when images are uploaded to martor's markdown field.
+        validation is from martor's documentation.
+        it will upload images to cloudinary.
+
+        Note:
+            when there is '?' in the to be foldername the image upload will not work.
+        """
 
         if not request.is_ajax():
             return HttpResponse(_('Invalid request!'))
