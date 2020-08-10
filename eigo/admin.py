@@ -4,21 +4,10 @@ from django.db import models
 from .models import Phrase, Example, Snap
 
 
-def active(self, request, queryset):
-    queryset.update(is_active=True)
-
-
-active.short_description = '閲覧可能'
-
-
-def inactive(self, request, queryset):
-    queryset.update(is_active=False)
-
-
-inactive.short_description = '閲覧不可能'
-
-
 class ExampleInline(admin.TabularInline):
+    """
+    Attributes:
+    """
     model = Example
 
 
@@ -43,11 +32,29 @@ class PhraseAdmin(admin.ModelAdmin):
     search_fields = [
         'phrase',
     ]
-    actions = [active, inactive]
+    actions = ['active', 'inactive']
     inlines = [
         ExampleInline,
         SnapInline,
     ]
+
+    def active(self, request, queryset):
+        """
+        function to set the target model's "is_active" to True.
+        used in admin site.
+        """
+        queryset.update(is_active=True)
+
+    active.short_description = '閲覧可能'
+
+    def inactive(self, request, queryset):
+        """
+        function to set the target model's "is_active" to False.
+        used in admin site.
+        """
+        queryset.update(is_active=False)
+
+    inactive.short_description = '閲覧不可能'
 
 
 class SnapAdmin(admin.ModelAdmin):
