@@ -2,7 +2,6 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db import transaction
 from django.views.generic import ListView, DetailView
 from django.views.generic.edit import DeleteView
-from django.shortcuts import HttpResponseRedirect
 from django.urls import reverse_lazy
 from extra_views import CreateWithInlinesView, UpdateWithInlinesView, NamedFormsetsMixin
 
