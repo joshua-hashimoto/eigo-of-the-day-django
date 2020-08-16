@@ -6,6 +6,15 @@ Memo App for Instagram Account eigo.of.the.day
 
 [TOC]
 
+## deploy
+
+This project is uploaded to Heroku.
+
+### notable feature
+
+- docker
+- postgresql
+
 ## Note
 
 - Currently not using package `martor`, but installed and configured.
