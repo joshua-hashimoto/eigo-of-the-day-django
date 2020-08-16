@@ -1,11 +1,11 @@
 {% extends '_base.html' %}
 
 {% block title %}
-Forbidden | {{ block.super }}
+Not Found | {{ block.super }}
 {% endblock title %}
 
 {% block content %}
-<h1 class="uk-heading-divider">403 Forbidden</h1>
+<h1 class="uk-heading-divider">404 Not Found</h1>
 <div class="uk-margin">
     <a href="{% url 'account_login' %}" class="uk-button uk-button-primary">Log In</a>
 </div>
