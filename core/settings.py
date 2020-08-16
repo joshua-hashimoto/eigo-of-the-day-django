@@ -188,6 +188,8 @@ ACCOUNT_AUTHENTICATION_METHOD = 'email'
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_UNIQUE_EMAIL = True
 # ACCOUNT_LOGIN_ON_EMAIL_CONFIRMATION = True
+# change this to disable signup functionality
+ACCOUNT_ADAPTER = 'core.additional.account_adapter.CustomAccountAdapter'
 
 
 # cloudinary configs
